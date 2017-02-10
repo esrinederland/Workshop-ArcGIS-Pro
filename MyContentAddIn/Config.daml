@@ -1,0 +1,43 @@
+﻿<ArcGIS defaultAssembly="MyContentAddIn.dll" defaultNamespace="MyContentAddIn" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+  <AddInInfo id="{784050b7-2760-485a-ad6e-bd0e9b963109}" version="1.0" desktopVersion="1.4.7198">
+    <Name>MyContentAddIn</Name>
+    <Description>AddIn for adding my own content to the map</Description>
+    <Image>Images\AddinDesktop32.png</Image>
+    <Author>Hissink</Author>
+    <Company>Esri Nederland</Company>
+    <Date>07-Feb-2017 10:16:02, 2017</Date>
+    <Subject>Framework</Subject>
+    <!-- Note subject can be one or more of these topics:
+                    Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
+  </AddInInfo>
+  <modules>
+    <insertModule id="MyContentAddIn_Module" className="Module1" autoLoad="false" caption="Module1">
+      <!-- uncomment to have the control hosted on a separate tab-->
+      <tabs>
+        <tab id="MyContentAddIn_Tab" caption="Custom Tab">
+          <group refID="MyContentAddIn_Group" />
+        </tab>
+      </tabs>
+      <groups>
+        <!-- comment this out if you have no controls on the Addin tab to avoid
+              an empty group-->
+        <group id="MyContentAddIn_Group" caption="Content" appearsOnAddInTab="false">
+          <!-- host controls within groups -->
+          <button refID="MyContentAddIn_MyContentButton" size="large" />
+          <button refID="MyContentAddIn_MyContentDockpane_ShowButton" size="large" />
+        </group>
+      </groups>
+      <controls>
+        <!-- add your controls here -->
+        <button id="MyContentAddIn_MyContentDockpane_ShowButton" caption="Show My Content" className="MyContentDockpane_ShowButton" loadOnClick="true" smallImage="Images\AddItemButton16.png" largeImage="Images\AddItemButton32.png">
+          <tooltip heading="Show Dockpane">Show Content Items<disabledText /></tooltip>
+        </button>
+      </controls>
+      <dockPanes>
+        <dockPane id="MyContentAddIn_MyContentDockpane" caption="Add content to the Map" className="MyContentDockpaneViewModel" dock="group" dockWith="esri_core_contentsDockPane">
+          <content className="MyContentDockpaneView" />
+        </dockPane>
+      </dockPanes>
+    </insertModule>
+  </modules>
+</ArcGIS>
